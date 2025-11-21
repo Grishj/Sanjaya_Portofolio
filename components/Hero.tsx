@@ -114,7 +114,7 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16">
           {/* Profile Picture */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -122,10 +122,10 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
             className="flex-shrink-0"
           >
-            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-8 border-primary-500 dark:border-primary-400 shadow-2xl shadow-primary-500/30">
+            <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 sm:border-8 border-primary-500 dark:border-primary-400 shadow-2xl shadow-primary-500/30">
               {/* Fallback gradient background */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center">
-                <span className="text-white text-6xl font-bold">SJ</span>
+                <span className="text-white text-4xl sm:text-6xl font-bold">SJ</span>
               </div>
               {/* Profile Image - will overlay on top of fallback if it loads */}
               <Image
@@ -146,7 +146,7 @@ export default function Hero() {
             className="text-center lg:text-left max-w-2xl"
           >
             <motion.h1
-              className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -164,7 +164,7 @@ export default function Hero() {
             </motion.h1>
 
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-800 dark:text-gray-300 mb-6"
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-800 dark:text-gray-300 mb-4 sm:mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -182,7 +182,7 @@ export default function Hero() {
             </motion.h2>
 
             <motion.p
-              className="text-lg sm:text-xl text-gray-700 dark:text-gray-400 mb-8 leading-relaxed"
+              className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-400 mb-6 sm:mb-8 leading-relaxed px-4 lg:px-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -193,21 +193,21 @@ export default function Hero() {
             </motion.p>
 
             <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center px-4 lg:px-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <button
                 onClick={scrollToProjects}
-                className="group px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transition-all hover:scale-105 flex items-center space-x-2"
+                className="w-full sm:w-auto group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-lg font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all hover:scale-105 flex items-center justify-center space-x-2"
               >
                 <span>View Projects</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </button>
               <a
                 href="#contact"
-                className="px-8 py-4 border-2 border-primary-600 text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-lg font-semibold text-lg hover:bg-primary-600 hover:text-white dark:hover:bg-primary-400 dark:hover:text-slate-900 transition-all hover:scale-105"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border-2 border-primary-600 text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-lg font-semibold text-base sm:text-lg hover:bg-primary-600 hover:text-white dark:hover:bg-primary-400 dark:hover:text-slate-900 transition-all hover:scale-105 text-center"
               >
                 Get In Touch
               </a>
@@ -217,7 +217,7 @@ export default function Hero() {
 
         {/* Scroll Indicator */}
         <motion.div
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2 hidden sm:block"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: [0, 10, 0] }}
           transition={{ opacity: { delay: 1.2 }, y: { duration: 1.5, repeat: Infinity } }}
