@@ -7,7 +7,7 @@ import { Project } from '@/types'
 interface ProjectCardProps {
   project: Project
   index: number
-  onViewDetails: () => void
+  onViewDetails?: () => void
 }
 
 export default function ProjectCard({ project, index, onViewDetails }: ProjectCardProps) {
@@ -63,13 +63,15 @@ export default function ProjectCard({ project, index, onViewDetails }: ProjectCa
         </div>
 
         {/* View Details Button */}
-        <button
-          onClick={onViewDetails}
-          className="w-full py-2 px-4 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2 group"
-        >
-          <span>View Details</span>
-          <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-        </button>
+        {onViewDetails && (
+          <button
+            onClick={onViewDetails}
+            className="w-full py-2 px-4 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2 group"
+          >
+            <span>View Details</span>
+            <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          </button>
+        )}
       </div>
     </motion.div>
   )
