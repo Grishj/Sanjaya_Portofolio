@@ -70,27 +70,27 @@ export default function Contact() {
   ]
 
   return (
-    <section id="contact" className="py-20 bg-gray-50 dark:bg-slate-900">
+    <section id="contact" className="py-12 sm:py-16 md:py-20 bg-gray-50 dark:bg-slate-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-12 md:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
             <span className="bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent">
               Get In Touch
             </span>
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4">
             Have a project in mind or want to discuss engineering opportunities? 
             Feel free to reach out!
           </p>
         </motion.div>
 
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
           {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}

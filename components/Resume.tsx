@@ -48,7 +48,7 @@ export default function Resume() {
             className="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all"
           >
             <Download className="w-5 h-5" />
-            <span>Download Resume (PDF)</span>
+            <span>Download Resume</span>
           </motion.a>
         </motion.div>
 
