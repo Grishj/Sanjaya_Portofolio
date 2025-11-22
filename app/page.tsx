@@ -4,6 +4,7 @@ import Portfolio from '@/components/Portfolio'
 import Experience from '@/components/Experience'
 import Resume from '@/components/Resume'
 import Contact from '@/components/Contact'
+import ScrollToTop from '@/components/ScrollToTop'
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Experience />
       <Resume />
       <Contact />
+      <ScrollToTop />
     </>
   )
 }

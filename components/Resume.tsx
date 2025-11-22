@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Download, GraduationCap, Award, Trophy, Wrench } from 'lucide-react'
+import { Download, GraduationCap, Award, Trophy, Wrench, Eye } from 'lucide-react'
 import { educationData, certificationsData, achievementsData } from '@/data/resumeData'
 
 export default function Resume() {
@@ -39,17 +39,30 @@ export default function Resume() {
             Download my complete resume or view highlights below
           </p>
           
-          {/* Download Button */}
-          <motion.a
-            href="/assets/resume.pdf"
-            download
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all"
-          >
-            <Download className="w-5 h-5" />
-            <span>Download Resume</span>
-          </motion.a>
+          {/* Resume Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <motion.a
+              href="/assets/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all"
+            >
+              <Eye className="w-5 h-5" />
+              <span>Show in Browser</span>
+            </motion.a>
+            <motion.a
+              href="/assets/resume.pdf"
+              download
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center space-x-2 px-8 py-4 border-2 border-primary-600 text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-lg font-semibold hover:bg-primary-600 hover:text-white dark:hover:bg-primary-400 dark:hover:text-slate-900 transition-all"
+            >
+              <Download className="w-5 h-5" />
+              <span>Download Resume</span>
+            </motion.a>
+          </div>
         </motion.div>
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
