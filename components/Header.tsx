@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('home')
   const { theme, toggleTheme } = useTheme()
   
   // Typing animation state
@@ -19,7 +20,24 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
+      
+      // Detect active section
+      const sections = ['home', 'projects', 'portfolio', 'experience', 'resume', 'contact']
+      const scrollPosition = window.scrollY + 100 // Offset for header
+      
+      for (const section of sections) {
+        const element = document.getElementById(section)
+        if (element) {
+          const { offsetTop, offsetHeight } = element
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section)
+            break
+          }
+        }
+      }
     }
+    
+    handleScroll() // Call once on mount
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -99,18 +117,31 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link, index) => (
-              <motion.button
-                key={link.name}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                onClick={() => scrollToSection(link.href)}
-                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors font-medium"
-              >
-                {link.name}
-              </motion.button>
-            ))}
+            {navLinks.map((link, index) => {
+              const isActive = activeSection === link.href.substring(1)
+              return (
+                <motion.button
+                  key={link.name}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  onClick={() => scrollToSection(link.href)}
+                  className={`relative text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors font-medium ${
+                    isActive ? 'text-primary-600 dark:text-primary-400' : ''
+                  }`}
+                >
+                  {link.name}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeIndicator"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary-600 dark:bg-primary-400"
+                      initial={false}
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </motion.button>
+              )
+            })}
             
             {/* Theme Toggle */}
             <motion.button
@@ -165,15 +196,22 @@ export default function Header() {
               className="md:hidden overflow-hidden bg-white dark:bg-slate-900 border-t border-gray-200 dark:border-gray-700"
             >
               <div className="py-4 space-y-2">
-                {navLinks.map((link) => (
-                  <button
-                    key={link.name}
-                    onClick={() => scrollToSection(link.href)}
-                    className="block w-full text-left px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-slate-800 hover:text-primary-600 dark:hover:text-primary-400 rounded-lg transition-colors font-medium"
-                  >
-                    {link.name}
-                  </button>
-                ))}
+                {navLinks.map((link) => {
+                  const isActive = activeSection === link.href.substring(1)
+                  return (
+                    <button
+                      key={link.name}
+                      onClick={() => scrollToSection(link.href)}
+                      className={`block w-full text-left px-4 py-3 rounded-lg transition-colors font-medium ${
+                        isActive
+                          ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400'
+                          : 'text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-slate-800 hover:text-primary-600 dark:hover:text-primary-400'
+                      }`}
+                    >
+                      {link.name}
+                    </button>
+                  )
+                })}
               </div>
             </motion.div>
           )}

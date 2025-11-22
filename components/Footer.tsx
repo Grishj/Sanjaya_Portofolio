@@ -109,7 +109,7 @@ export default function Footer() {
         <div className="border-t border-gray-300 dark:border-gray-800 pt-6 mt-8">
           <div className="text-center">
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              © {currentYear} Civil Engineer Portfolio. All rights reserved.
+              © {currentYear} Er.Sanjaya Joshi. All rights reserved.
             </p>
           </div>
         </div>
